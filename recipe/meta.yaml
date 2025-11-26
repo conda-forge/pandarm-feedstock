@@ -10,7 +10,7 @@ source:
   sha256: 919b9729f4c57546d96cc7e66b1cce7f566fc6ec094f025583e00cd817ddb869
 
 build:
-  number: 0
+  number: 1
   script:
     - export LDFLAGS="$LDFLAGS -fopenmp"  # [osx]
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
