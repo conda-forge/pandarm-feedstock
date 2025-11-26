@@ -41,7 +41,6 @@ requirements:
     - libgomp  # [linux]
     - numpy >=2
     - pandas >=0.17
-    - requests >=2.0
     - scikit-learn >=0.18
     - pytables >=3.1
     - osmnx >=2
