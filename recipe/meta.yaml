@@ -37,6 +37,7 @@ requirements:
 
   run:
     - python
+    - vcomp14  # [win]
     - llvm-openmp  # [osx]
     - libgomp  # [linux]
     - numpy >=1.26
