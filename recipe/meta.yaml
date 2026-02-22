@@ -37,8 +37,9 @@ requirements:
 
   run:
     - python
+    - vcomp14  # [win]
     - llvm-openmp  # [osx]
-    - libgomp  # [linux or win]
+    - libgomp  # [linux]
     - numpy >=1.26
     - pandas >=2.2
     - scikit-learn >=1.4
