@@ -1,5 +1,5 @@
 {% set name = "pandarm" %}
-{% set version = "0.0.4" %}
+{% set version = "0.0.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 97af7ddebe3457abf4d593b8272ba212adfa1b0d6dbe68117b4a816ada01c1b4
+  sha256: 8aa54a49e2f46be1be342942b13c5731678da38388beae37d10e100fb30c4fbe
 
 build:
   number: 0
