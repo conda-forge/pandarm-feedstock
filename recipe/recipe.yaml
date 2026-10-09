@@ -1,0 +1,85 @@
+schema_version: 1
+
+context:
+  name: pandarm
+  version: "0.0.5"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://files.pythonhosted.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
+  sha256: 8aa54a49e2f46be1be342942b13c5731678da38388beae37d10e100fb30c4fbe
+
+build:
+  number: 2
+  script:
+    - if: osx
+      then: export LDFLAGS="$LDFLAGS -fopenmp"
+    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  build:
+    - if: build_platform != target_platform
+      then: python
+    - if: build_platform != target_platform
+      then: cross-python_${{ target_platform }}
+    - if: build_platform != target_platform
+      then: cython >=0.25.2
+    - if: build_platform != target_platform
+      then: numpy
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('cxx') }}
+    - if: osx
+      then: llvm-openmp
+  host:
+    - python
+    - pip
+    - cython >=0.25.2
+    - if: linux or win
+      then: libgomp
+    - if: osx
+      then: llvm-openmp
+    - numpy
+    - setuptools >=61.0
+    - setuptools-scm >=6.2
+  run:
+    - python
+    - if: win
+      then: vcomp14
+    - if: osx
+      then: llvm-openmp
+    - if: linux
+      then: libgomp
+    - numpy >=1.26
+    - pandas >=2.2
+    - scikit-learn >=1.4
+    - pytables >=3.10
+    - osmnx >=2.0
+    - geopandas >=1.1
+
+tests:
+  - python:
+      imports:
+        - pandarm
+        - pandarm.cyaccess
+        - pandarm.loaders
+      pip_check: true
+
+about:
+  license: AGPL-3.0-only
+  license_file: LICENSE.txt
+  summary: Python library for network analysis
+  description: |
+    pandarm is a Python library for network analysis that uses contraction hierarchies to calculate super-fast travel accessibility metrics and shortest paths. The numerical code is in C++.
+  homepage: https://github.com/oturns/pandarm
+  repository: https://github.com/oturns/pandarm
+  documentation: https://oturns.github.io/pandarm
+
+extra:
+  recipe-maintainers:
+    - knaaptime
+    - sjsrey
+    - jgaboardi
