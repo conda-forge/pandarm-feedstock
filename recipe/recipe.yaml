@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pandarm
-  version: "0.0.7"
+  version: "0.0.7.post1"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: f3a325072c171995b9b6085cd5922da33ed1a7e26e8c2ad8f3cb23d08f8ced88
+  sha256: d85fcc70860e5fc87577b7c820810e1011b298e0242f90d3aecc56e8d044f1ce
 
 build:
   number: 0
